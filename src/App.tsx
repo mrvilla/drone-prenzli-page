@@ -139,7 +139,6 @@ function App() {
                         e.stopPropagation();
                         handleVideoPlay(video);
                       }}
-                      title={`Play ${video.title}`}
                       className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-transparent"
                     >
                       <Play className="w-7 h-7 text-zinc-950 ml-1" fill="currentColor" />
@@ -336,7 +335,7 @@ function App() {
             <X className="w-6 h-6" />
           </button>
 
-          <div className="relative w-full max-w-4xl mx-auto">
+          <div className="relative w-full max-w-5xl mx-auto">
             <div className="bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl">
               {/* Video Header */}
               <div className="p-6 border-b border-zinc-700">
