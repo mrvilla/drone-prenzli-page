@@ -6,22 +6,28 @@ const videos = [
     id: 1,
     title: 'Daylight Pass',
     description: 'Smooth cinematic movement showcasing façade and surrounding streets',
-    thumbnail: 'https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=800',
-    duration: '1:24'
+    thumbnail: '/prenzli-01-Cover.jpg',
+    gif: '/prenzli-01.gif',
+    video: '/prenzli-01.mp4',
+    duration: '1:06'
   },
   {
     id: 2,
     title: 'Golden Hour',
     description: 'A warm, dynamic flyby with sunset tones',
-    thumbnail: 'https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop',
-    duration: '2:15'
+    thumbnail: '/prenzli-02-Cover.jpg',
+    gif: '/prenzli-02.gif',
+    video: '/prenzli-02.mp4',
+    duration: '0:39'
   },
   {
     id: 3,
     title: 'Top-Down Precision',
     description: 'High-detail overhead shots for layout and context',
-    thumbnail: 'https://images.pexels.com/photos/2404843/pexels-photo-2404843.jpeg?auto=compress&cs=tinysrgb&w=800',
-    duration: '1:45'
+    thumbnail: '/prenzli-03-Cover.jpg',
+    gif: '/prenzli-03.gif',
+    video: '/prenzli-03.mp4',
+    duration: '0:59'
   }
 ];
 
@@ -35,6 +41,7 @@ const photos = [
 
 function App() {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<typeof videos[0] | null>(null);
 
   const nextPhoto = () => {
     if (selectedPhoto !== null) {
@@ -48,6 +55,10 @@ function App() {
     }
   };
 
+  const handleVideoPlay = (video: typeof videos[0]) => {
+    setSelectedVideo(video);
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Hero Section */}
@@ -55,7 +66,7 @@ function App() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+            backgroundImage: 'url(./prenzli-Cover.jpg?auto=compress&cs=tinysrgb&w=1920)',
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/50 to-zinc-950"></div>
@@ -109,16 +120,30 @@ function App() {
                 className="group cursor-pointer"
               >
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-zinc-900 mb-4">
+                  {/* Thumbnail Image */}
                   <img
                     src={video.thumbnail}
                     alt={video.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+                  />
+                  {/* GIF that appears on hover */}
+                  <img
+                    src={video.gif}
+                    alt={`${video.title} preview`}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleVideoPlay(video);
+                      }}
+                      title={`Play ${video.title}`}
+                      className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-transparent"
+                    >
                       <Play className="w-7 h-7 text-zinc-950 ml-1" fill="currentColor" />
-                    </div>
+                    </button>
                   </div>
                   <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm px-3 py-1 rounded-full text-sm">
                     {video.duration}
@@ -291,6 +316,54 @@ function App() {
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
             {selectedPhoto + 1} / {photos.length}
+          </div>
+        </div>
+      )}
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedVideo(null);
+            }}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors z-10"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="relative w-full max-w-4xl mx-auto">
+            <div className="bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl">
+              {/* Video Header */}
+              <div className="p-6 border-b border-zinc-700">
+                <h3 className="text-2xl font-medium text-white mb-2">{selectedVideo.title}</h3>
+                <p className="text-zinc-400">{selectedVideo.description}</p>
+              </div>
+              
+              {/* Video Player */}
+              <div className="relative aspect-video bg-black">
+                <video
+                  src={selectedVideo.video}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              
+              {/* Video Footer */}
+              <div className="p-4 bg-zinc-800/50 text-center">
+                <p className="text-zinc-400 text-sm">
+                  Duration: {selectedVideo.duration}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}
