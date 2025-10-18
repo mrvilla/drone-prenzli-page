@@ -32,11 +32,11 @@ const videos = [
 ];
 
 const photos = [
-  'https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/2404843/pexels-photo-2404843.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/1438832/pexels-photo-1438832.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/1642125/pexels-photo-1642125.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  '/prenzli-ave-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
+  '/prenzli-corner-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
+  '/prenzli-front-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
+  '/prenzli-side-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
+  '/prenzli-upfront-street-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
 ];
 
 function App() {
@@ -139,6 +139,7 @@ function App() {
                         e.stopPropagation();
                         handleVideoPlay(video);
                       }}
+                      title="Play Video"
                       className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-transparent"
                     >
                       <Play className="w-7 h-7 text-zinc-950 ml-1" fill="currentColor" />
@@ -219,7 +220,7 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <a
-              href="mailto:enrique@email.com"
+              href="mailto:fly@iammrvilla.com"
               className="flex items-center gap-4 bg-zinc-900 hover:bg-zinc-800 p-6 rounded-xl transition-colors group"
             >
               <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
@@ -227,12 +228,12 @@ function App() {
               </div>
               <div>
                 <div className="text-sm text-zinc-400 mb-1">Email</div>
-                <div className="text-white">enrique@email.com</div>
+                <div className="text-white">fly@iammrvilla.com</div>
               </div>
             </a>
 
             <a
-              href="tel:+49123456789"
+              href="tel:+491701518404"
               className="flex items-center gap-4 bg-zinc-900 hover:bg-zinc-800 p-6 rounded-xl transition-colors group"
             >
               <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
@@ -240,7 +241,7 @@ function App() {
               </div>
               <div>
                 <div className="text-sm text-zinc-400 mb-1">Phone</div>
-                <div className="text-white">+49 123 456 789</div>
+                <div className="text-white">+49 170 151 8404</div>
               </div>
             </a>
 
@@ -250,14 +251,14 @@ function App() {
               </div>
               <div>
                 <div className="text-sm text-zinc-400 mb-1">Location</div>
-                <div className="text-white">Berlin, Germany</div>
+                <div className="text-white">Berlin, Germany (EU)</div>
               </div>
             </div>
           </div>
 
           <div className="text-center">
             <p className="text-zinc-400 italic border-l-2 border-emerald-400 pl-6 py-2 inline-block">
-              Available for commercial drone work in Berlin and beyond. Fully licensed (A2/STSc).
+              Available for commercial drone work in Berlin and beyond. Fully licensed (A1/A3, A2/STS).
             </p>
           </div>
         </div>
@@ -281,6 +282,7 @@ function App() {
               e.stopPropagation();
               setSelectedPhoto(null);
             }}
+            title="Close Photo"
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
           >
             <X className="w-6 h-6" />
@@ -291,6 +293,7 @@ function App() {
               e.stopPropagation();
               prevPhoto();
             }}
+            title="Previous Photo"
             className="absolute left-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -301,6 +304,7 @@ function App() {
               e.stopPropagation();
               nextPhoto();
             }}
+            title="Next Photo"
             className="absolute right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
           >
             <ChevronRight className="w-6 h-6" />
@@ -330,6 +334,7 @@ function App() {
               e.stopPropagation();
               setSelectedVideo(null);
             }}
+            title="Close Video"
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors z-10"
           >
             <X className="w-6 h-6" />
