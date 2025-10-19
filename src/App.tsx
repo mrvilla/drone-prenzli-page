@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Play, Camera, Mail, Phone, MapPin, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Play, Mail, Phone, ChevronLeft, ChevronRight, X, Instagram } from 'lucide-react';
 
 const videos = [
   {
@@ -37,6 +37,7 @@ const photos = [
   '/prenzli-front-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
   '/prenzli-side-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
   '/prenzli-upfront-street-view-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
+  '/prenzli-front-side-styled.jpg?auto=compress&cs=tinysrgb&w=1200',
 ];
 
 function App() {
@@ -74,21 +75,28 @@ function App() {
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <div className="mb-6 inline-block">
-            <Camera className="w-16 h-16 text-emerald-400" strokeWidth={1.5} />
+            <img 
+              src="/flywithme.svg" 
+              alt="Fly With Evilla Logo" 
+              className="w-20 h-20 text-emerald-400" 
+            />
           </div>
           <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight">
-            Prenzlauer Berg <span className="block mt-2 text-emerald-400">from Above</span>
+            Prenzlauer Berg <span className="block mt-2" style={{ color: '#06B391' }}>from Above</span>
           </h1>
-          <p className="text-xl md:text-2xl text-zinc-300 font-light leading-relaxed">
+          <p className="text-xl md:text-2xl font-light leading-relaxed">
             A modern view of Berlin architecture, captured in motion
           </p>
-          <p className="text-sm md:text-base text-zinc-400 mt-4 tracking-wide">
+          <p className="text-sm md:text-base mt-4 font-light tracking-wide">
             Drone footage and aerial photography by Enrique
           </p>
           <div className="mt-12">
             <a
               href="#videos"
-              className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full transition-all duration-300 font-medium"
+              className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-full transition-all duration-300 font-medium"
+              style={{ backgroundColor: '#06B391' }}
+              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#08908D'}
+              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#06B391'}
             >
               <Play className="w-5 h-5" />
               View Work
@@ -245,20 +253,23 @@ function App() {
               </div>
             </a>
 
-            <div className="flex items-center gap-4 bg-zinc-900 p-6 rounded-xl">
-              <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-emerald-400" />
+            <a
+              href="https://www.instagram.com/fly_iammrvilla/"
+              className="flex items-center gap-4 bg-zinc-900 hover:bg-zinc-800 p-6 rounded-xl transition-colors group"
+            >
+              <div className="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                <Instagram className="w-6 h-6 text-emerald-400" />
               </div>
               <div>
-                <div className="text-sm text-zinc-400 mb-1">Location</div>
-                <div className="text-white">Berlin, Germany (EU)</div>
+                <div className="text-sm text-zinc-400 mb-1">Instagram</div>
+                <div className="text-white">@fly_iammrvilla</div>
               </div>
-            </div>
+            </a>
           </div>
 
           <div className="text-center">
             <p className="text-zinc-400 italic border-l-2 border-emerald-400 pl-6 py-2 inline-block">
-              Available for commercial drone work in Berlin and beyond. Fully licensed (A1/A3, A2/STS).
+              Available for drone projects in Berlin and beyond. Fully licensed (A1/A3, A2/STS).
             </p>
           </div>
         </div>
