@@ -4,16 +4,16 @@ import { Play, Mail, Phone, ChevronLeft, ChevronRight, X, Instagram } from 'luci
 const videos = [
   {
     id: 1,
-    title: 'Daylight Pass',
-    description: 'Smooth cinematic movement showcasing façade and surrounding streets',
+    title: 'Top-Down Precision',
+    description: 'High-detail overhead shots for layout and context',
     thumbnail: '/prenzli-01-Cover.jpg',
     gif: '/prenzli-01.gif',
     video: '/prenzli-01.mp4',
-    duration: '1:06'
+    duration: '0:38'
   },
   {
     id: 2,
-    title: 'Golden Hour',
+    title: 'Side-on Dynamics',
     description: 'A warm, dynamic flyby with sunset tones',
     thumbnail: '/prenzli-02-Cover.jpg',
     gif: '/prenzli-02.gif',
@@ -22,12 +22,12 @@ const videos = [
   },
   {
     id: 3,
-    title: 'Top-Down Precision',
-    description: 'High-detail overhead shots for layout and context',
+    title: 'Daylight Pass',
+    description: 'Smooth movement showcasing façade and inside views',
     thumbnail: '/prenzli-03-Cover.jpg',
     gif: '/prenzli-03.gif',
     video: '/prenzli-03.mp4',
-    duration: '0:59'
+    duration: '0:42'
   }
 ];
 
@@ -81,8 +81,8 @@ function App() {
               className="w-20 h-20 text-emerald-400" 
             />
           </div>
-          <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight">
-            Prenzlauer Berg <span className="block mt-2" style={{ color: '#06B391' }}>from Above</span>
+          <h1 className="text-5xl md:text-7xl font-light mb-6 tracking-tight bold">
+            Prenzlauer Berg <span className="block mt-2 bold" style={{ color: '#06B391' }}>from Above</span>
           </h1>
           <p className="text-xl md:text-2xl font-light leading-relaxed">
             A modern view of Berlin architecture, captured in motion
